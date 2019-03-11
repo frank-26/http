@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <form action="/form" method="POST"  id="form" enctype="multipart/form-data" >
+    <input type="text" name="name" />
+    <input type="file" name="file" />
+    <input type="password" name="password" />
+    <input type="submit" />
+    </form>
+</body>
+<script>
+    var form=document.querySelector('#form')
+    form.addEventListener('submit',e=>{
+        e.preventDefault() //阻止默认事件
+        var formData=new FormData(form)
+        console.log(formData)
+        fetch('/form',{
+            method:'POST',
+            body:formData
+        })
+    })
+</script>
+</html>
